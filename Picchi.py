@@ -7,7 +7,7 @@ try:os.system('am start https://t.me/xyteeetools')
 except:pass
 bit = platform.architecture()[0]
 if bit == '64bit':
-    import acc
+    import xcmain
     xcmain.Rand()
 elif bit == '32bit':
     os.system("exit")

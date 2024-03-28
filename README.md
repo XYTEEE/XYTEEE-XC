@@ -16,5 +16,6 @@ cd XYTEEE-XC
 python Picchi.py
 ```
 
-```Whatsapp group Link : https://chat.whatsapp.com/Bjc7QkGoMYJ4RE1hdrjcJa```
+Whatsapp group Link : ```https://chat.whatsapp.com/Bjc7QkGoMYJ4RE1hdrjcJa```
+
 [CODED BY XYTEEE]

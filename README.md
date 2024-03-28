@@ -15,7 +15,9 @@ git clone --depth=1 https://github.com/XYTEEE/XYTEEE-XC
 cd XYTEEE-XC
 python Picchi.py
 ```
-
+Note: (This Tools Are Paid, So You Need Permission To Use XYTEEE-XC Tools Enjoy)
+ 
+```
 Whatsapp group Link : ```https://chat.whatsapp.com/Bjc7QkGoMYJ4RE1hdrjcJa```
 
 [CODED BY XYTEEE]

@@ -28,8 +28,8 @@ Note: (This Tools Are Paid, So You Need Permission To Use XYTEEE-XC Tools Enjoy)
   <li>(5) crack from api,b-graph</li>
   <li>(6) crack from random mix</li>
   <li>(7) crack from random uid</li>
-  <li>(08) crack from random number</li>
-  <li>(09) crack from random email</li>
+  <li>(8) crack from random number</li>
+  <li>(9) crack from random email</li>
   <li>(10) crack from random username</li>
   <li>random email & name</li>
 </ol>

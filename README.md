@@ -18,6 +18,22 @@ python Picchi.py
 Note: (This Tools Are Paid, So You Need Permission To Use XYTEEE-XC Tools Enjoy)
 
 ![20200808_160757](https://github.com/XYTEEE/XYTEEE-XC/blob/main/Xyteee.png)
+
+ <h2>Facebook Tools, category</h2>
+<ol>
+  <li>(1) Recommended MENU</li>
+  <li>(2) crack from public</li>
+  <li>(3) crack fron file Create</li>
+  <li>(4) crack from Normal File</li>
+  <li>(5) crack from api,b-graph</li>
+  <li>(6) crack from random mix</li>
+  <li>(7) crack from random uid</li>
+  <li>(08) crack from random number</li>
+  <li>(09) crack from random email</li>
+  <li>(10) crack from random username</li>
+  <li>random email & name</li>
+</ol>
+<img src="https://github.com/XYTEEE/XYTEEE-XC/blob/main/Screenshot_2024_0616_084149.png">
  
 ```
 Whatsapp group Link : ```https://chat.whatsapp.com/Bjc7QkGoMYJ4RE1hdrjcJa```

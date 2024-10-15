@@ -1,5 +1,5 @@
 import os, sys
 try:
-    __import__("xcmain").main()
+    __import__("xcmain").Rand()
 except Exception as e:
     exit(str(e))

@@ -14,6 +14,14 @@ rm -rf XYTEEE-XC
 git clone --depth=1 https://github.com/XYTEEE/XYTEEE-XC
 cd XYTEEE-XC
 python Picchi.py
+
+Another Run
+
+rm -rf XYTEEE-XC
+git clone --depth=1 https://github.com/XYTEEE/XYTEEE-XC
+cd XYTEEE-XC
+chmod 777 Xyteee
+./Xyteee
 ```
 Note: (This Tools Are Paid, So You Need Permission To Use XYTEEE-XC Tools Enjoy)
 

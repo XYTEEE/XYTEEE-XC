@@ -1,0 +1,6 @@
+requests
+rich
+stdiomask
+mechanize
+bs4
+pyotp

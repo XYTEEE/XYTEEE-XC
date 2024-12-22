@@ -24,6 +24,22 @@ Regular Update 🔥
     ```
     python Picchi.py
     ```
+
+## 📖 Another Run
+1. **Clone the Repository:**
+    ```
+    git clone --depth=1 https://github.com/XYTEEE/XYTEEE-XC
+    cd XYTEEE-XC
+    ```
+2. **Install the Required Modules:**
+    ```
+    pip install -r requirements.txt
+    ```
+3. **Run the Program:**
+    ```
+    chmod 777 Xyteee
+    ./Xyteee
+    ```
 ## 🏷 FB Tools Price
 <details>
   <summary>Please click here to view the results</summary>
@@ -37,13 +53,6 @@ Regular Update 🔥
 | 1 Month    | 10$             | 20% Off             |
 | 15 Days        | 5$             | 5% Off
 
-Another Run
-
-rm -rf XYTEEE-XC
-git clone --depth=1 https://github.com/XYTEEE/XYTEEE-XC
-cd XYTEEE-XC
-chmod 777 Xyteee
-./Xyteee
 ```
 Note: (This Tools Are Paid, So You Need Permission To Use XYTEEE-XC Tools Enjoy)
 

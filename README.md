@@ -1,5 +1,4 @@
-File & Random Clonnig Repository
-Contact Facebook & WhatsApp 👇
+## File & Random Clonnig Repository Contact Facebook & WhatsApp 👇
 <b></b> </br><br> [![Facebook](https://img.shields.io/badge/Facebook-XYTEEE-blue?style=flat-square&logo=facebook)](https://www.facebook.com/XyteeeHackingTools)<br> [![WhatsApp](https://img.shields.io/badge/WhatsApp-XYTEEE-blue?style=flat-square&logo=WhatsApp)](wa.me/+8801926890544)
 
 ## Description 
@@ -37,29 +36,3 @@ Contact Facebook & WhatsApp 👇
 |:------------|:-------------------|:-------------------|
 | 1 Month    | 10$             | 20% Off             |
 | 15 Days        | 5$             | 5% Off
-
-```
-Note: (This Tools Are Paid, So You Need Permission To Use XYTEEE-XC Tools Enjoy)
-
-![20200808_160757](https://github.com/XYTEEE/XYTEEE-XC/blob/main/Xyteee.png)
-
- <h2>Facebook Tools, category</h2>
-<ol>
-  <li>(1) Recommended MENU</li>
-  <li>(2) crack from public</li>
-  <li>(3) crack fron file Create</li>
-  <li>(4) crack from Normal File</li>
-  <li>(5) crack from api,b-graph</li>
-  <li>(6) crack from random mix</li>
-  <li>(7) crack from random uid</li>
-  <li>(8) crack from random number</li>
-  <li>(9) crack from random email</li>
-  <li>(10) crack from random username</li>
-  <li>random email & name</li>
-</ol>
-<img src="https://github.com/XYTEEE/XYTEEE-XC/blob/main/Screenshot_2024_0616_084149.png">
- 
-```
-Whatsapp group Link : ```https://chat.whatsapp.com/Bjc7QkGoMYJ4RE1hdrjcJa```
-
-[CODED BY XYTEEE]

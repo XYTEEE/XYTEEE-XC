@@ -1,4 +1,4 @@
-# Facebook Brute Force Premium
+# Facebook Brute Force Premium Script
 ![Premium](https://github.com/XYTEEE/XYTEEE-XC/blob/main/20241222_234126.png)
 
 
@@ -29,6 +29,11 @@
     ```
     python Picchi.py
     ```
+- 🛠️ **Auto Update**: The script will update automatically without the need for manual intervention.
+- 🌟 **Start Common File,Brute Facebook,Dump File Create,File Cloning,Auto Fb Create,Old Ids Cloning,Uid Cloning,Number Cloning,Gmail Cloning,Username Cloning**
+Meningkatkan interaksi akun target.
+- 💻 **Cross-Platform**: Can be run on Termux, Windows, and Linux.
+
 ## 🏷 FB Tools Price
 <details>
   <summary>Please click here to view the results</summary>
@@ -37,7 +42,7 @@
 
 </details>
 
-| Date | Price | Discount |
+| Time | Price | Discount |
 |:------------|:-------------------|:-------------------|
 | 1 Month    | 10$             | 20% Off             |
 | 15 Days        | 5$             | 5% Off

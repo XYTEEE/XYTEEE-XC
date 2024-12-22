@@ -24,6 +24,18 @@ Regular Update 🔥
     ```
     python Picchi.py
     ```
+## FB Tools Price!
+<details>
+  <summary>Klik untuk melihat gambar</summary>
+
+  ![RecurCrawl - Analisis Algoritma](https://github.com/XYTEEE/XYTEEE-XC/blob/main/Xyteee.png)
+
+</details>
+
+| Date | Price | Discount |
+|:------------|:-------------------|:-------------------|
+| Monthly      | 10$             | 20% Off             |
+| 15 Days        | 5$             | 5% Off
 
 Another Run
 

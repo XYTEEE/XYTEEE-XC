@@ -1,14 +1,15 @@
 File & Random Clonnig Repository
 Contact Facebook & WhatsApp 👇
-<b></b> </br><br> [![Facebook](https://img.shields.io/badge/Facebook-XYTEEE-blue?style=flat-square&logo=facebook)](https://facebook.com/groups/483783567010955/)<br> [![WhatsApp](https://img.shields.io/badge/WhatsApp-XYTEEE-blue?style=flat-square&logo=WhatsApp)](wa.me/+8801926890544)
+<b></b> </br><br> [![Facebook](https://img.shields.io/badge/Facebook-XYTEEE-blue?style=flat-square&logo=facebook)](https://www.facebook.com/XyteeeHackingTools)<br> [![WhatsApp](https://img.shields.io/badge/WhatsApp-XYTEEE-blue?style=flat-square&logo=WhatsApp)](wa.me/+8801926890544)
 
+## Description 
+**Premium** is a brute force attack tool for Facebook accounts built with **Python** programming language. Launched on **July 18, 2021**, this tool is designed to make it easy for beginners to hack with an automated method using a password list. Highlighted features include **Secure SSL Pinning Bypass Method** and compatibility with **Termux**, the best platform for Android users.
 
-File & Random Clonnig Command Always Working + No Login Issue 🖤
+## File & Random Clonnig Command Always Working + No Login Issue!
 
-Update Done : None
-File Method work : M1>M2>M3
-Regular Update 🔥
--> XD file 🔥
+**File Method work : M1>M2>M3**
+
+**Regular Update ✅️**
 
 ## 📖 How to Use
 1. **Clone the Repository:**
@@ -23,22 +24,6 @@ Regular Update 🔥
 3. **Run the Program:**
     ```
     python Picchi.py
-    ```
-
-## 📖 Another Run
-1. **Clone the Repository:**
-    ```
-    git clone --depth=1 https://github.com/XYTEEE/XYTEEE-XC
-    cd XYTEEE-XC
-    ```
-2. **Install the Required Modules:**
-    ```
-    pip install -r requirements.txt
-    ```
-3. **Run the Program:**
-    ```
-    chmod 777 Xyteee
-    ./Xyteee
     ```
 ## 🏷 FB Tools Price
 <details>

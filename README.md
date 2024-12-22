@@ -30,8 +30,8 @@
     python Picchi.py
     ```
 - 🛠️ **Auto Update**: The script will update automatically without the need for manual intervention.
-- 🌟 **Start Common File,Brute Facebook,Dump File Create,File Cloning,Auto Fb Create,Old Ids Cloning,Uid Cloning,Number Cloning,Gmail Cloning,Username Cloning**
-Meningkatkan interaksi akun target.
+- 🌟 **Brute Facebook,Dump File Create,File,Auto Fb Create,Old Ids,Uid,Number,Gmail,Username**
+You can use them with confidence.
 - 💻 **Cross-Platform**: Can be run on Termux, Windows, and Linux.
 
 ## 🏷 FB Tools Price

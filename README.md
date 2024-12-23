@@ -49,11 +49,10 @@ You can use them with confidence.
 
 ## 💳 Payment Method 
 **Binance Id** : ```1013121619```      
-**Perfect money (USD)** : ```U47605193```
+**Perfect money (USD)** : ```U47605193```                        
 **Dana/GoPay** : ```6285737608342```
 ## 📊 Crypto Address 
 **USDT (Bep20)** :                     ```0xb19cf6cfd3e973bb7c31629d0757f552b64b5f56```                              
-**USDT (TRC20)** :                     
-```THLewUh38ca8DRzNcQLfvgZ8VEZER6oRCT```                                      
+**USDT (TRC20)** :              ```THLewUh38ca8DRzNcQLfvgZ8VEZER6oRCT```                                      
 **BTC (Bitcoin)** : ```1JSzNJjtaFVfHRWdrpiMyEymRa6rgktHZf```                                      
 **LTC (Litecoin)** : ```LYQmQJD1kFaZRnLCxmZDjoDfByBsxoB8gj```

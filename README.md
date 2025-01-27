@@ -6,7 +6,13 @@
 ## File & Random Clonnig Repository Contact Facebook & WhatsApp 👇
 <b></b> </br><br> [![Facebook](https://img.shields.io/badge/Facebook-XYTEEE-blue?style=flat-square&logo=facebook)](https://www.facebook.com/XyteeeHackingTools)<br> [![WhatsApp](https://img.shields.io/badge/WhatsApp-XYTEEE-blue?style=flat-square&logo=WhatsApp)](wa.me/+8801926890544)
 
+## ⚠️ WARNING ⚠️
+
+          
+**This is an illegal script. Any kind of loss, damage, harm, or crime caused by it is entirely beyond the author's responsibility.**
+
 ## Description 
+
 **Premium** is a brute force attack tool for Facebook accounts built with **Python** programming language. Launched on **July 18, 2021**, this tool is designed to make it easy for beginners to hack with an automated method using a password list. Highlighted features include **Secure SSL Pinning Bypass Method** and compatibility with **Termux**, the best platform for Android users.
 
 ## File & Random Clonnig Command Always Working + No Login Issue!

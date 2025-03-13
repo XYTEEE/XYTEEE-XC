@@ -57,9 +57,11 @@ You can use them with confidence.
 | 15 Days        | 5$             | 5% Off
 
 ## 💳 Payment Method 
-**Binance Id** : ```1013121619```      
+**Binance Id** : ```1013121619```
+**Bybit Id** : ```440551484```
+**KuCoin Id** : ```239630303```
 **Perfect money (USD)** : ```U47605193```                        
-**Dana/GoPay** : ```6285737608342```
+**Dana** : ```085735457440```
 ## 📊 Crypto Address 
 **USDT (Bep20)** :                     ```0xb19cf6cfd3e973bb7c31629d0757f552b64b5f56```                              
 **USDT (TRC20)** :              ```THLewUh38ca8DRzNcQLfvgZ8VEZER6oRCT```                                      

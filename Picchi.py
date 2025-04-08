@@ -1,5 +1,5 @@
 import os, sys
 try:
-    __import__("xcmain").email_verification_system()
+    __import__("xcmain").security()
 except Exception as e:
     exit(str(e))

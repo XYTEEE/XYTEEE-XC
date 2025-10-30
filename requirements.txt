@@ -4,3 +4,4 @@ stdiomask
 mechanize
 bs4
 pyotp
+psutil

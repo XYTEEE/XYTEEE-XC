@@ -63,7 +63,7 @@ You can use them with confidence.
 **Perfect money (USD)** : ```U47605193```                        
 **Dana** : ```085735457440```
 ## 📊 Crypto Address 
-**USDT (Bep20)** :                     ```0xb19cf6cfd3e973bb7c31629d0757f552b64b5f56```                              
-**USDT (TRC20)** :              ```THLewUh38ca8DRzNcQLfvgZ8VEZER6oRCT```                                      
-**BTC (Bitcoin)** : ```1JSzNJjtaFVfHRWdrpiMyEymRa6rgktHZf```                                      
-**LTC (Litecoin)** : ```LYQmQJD1kFaZRnLCxmZDjoDfByBsxoB8gj```
+**USDT (Bep20)** :           ```0xc4e19b292805e054658160e5ab18a52f53f98f39```                              
+**USDT (TRC20)** :              ```TEXWqCaun11b8qstjc48iRm9b4hniLYhd3```                                      
+**BTC (Bitcoin)** : ```177wFqH7VHKtTuMCKquBPnq6yUcyV3PWbM```                                      
+**LTC (Litecoin)** : ```LRX6sPr66XCJL5EXc4zhwjZYXxZL5rCpbZ```

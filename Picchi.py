@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
-# Picchi.py - bootstrap runner that handles voice startup (download + play) then calls xcmain.email_verification_system()
-# Place this in your project root. Set VOICES_GITHUB_RAW_BASE_URL if you use a different repo/branch.
-# Skip welcome voice with: XYTEEE_SKIP_WELCOME=1
+# Picchi.py - bootstrap runner with play-once welcome voice and extended language support.
+# Skip welcome voice: XYTEEE_SKIP_WELCOME=1
+# Force play even if already played: XYTEEE_FORCE_WELCOME=1
+# Modes: XYTEEE_WELCOME_MODE=once (default) or daily
 
 import os
 import sys
@@ -9,84 +10,73 @@ import subprocess
 import shutil
 import time
 import traceback
-import importlib
+from datetime import datetime
 
-DEFAULT_VOICES_BASE = "https://raw.githubusercontent.com/Kawsar-Hosen/XYTEEE/main/voices/"
-WANTED_VOICES = ["bn.mp3", "hi.mp3", "ur.mp3", "id.mp3", "ar.mp3", "fa.mp3", "en.mp3"]
+DEFAULT_VOICES_BASE = "https://raw.githubusercontent.com/Kawsar-Hosen/XYTEEE-voices/main/voices/"
+# Added new language files: pt (Portuguese), vi (Vietnamese), my (Myanmar), es (Spanish), zh (Mandarin Chinese)
+WANTED_VOICES = [
+    "bn.mp3", "hi.mp3", "ur.mp3", "id.mp3", "ar.mp3", "fa.mp3", "en.mp3",
+    "pt.mp3", "vi.mp3", "my.mp3", "es.mp3", "zh.mp3"
+]
 
 def run_cmd(cmd):
     try:
         return subprocess.run(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
-    except Exception as e:
+    except Exception:
         return None
 
-def ensure_package_install(cmd_install):
-    """Best-effort install using provided shell command (e.g., 'pkg install -y mpv' or 'pip install playsound')."""
-    try:
-        rc = run_cmd(cmd_install)
-        return rc and rc.returncode == 0
-    except Exception:
-        return False
-
 def ensure_system_playback():
-    """Ensure at least one system playback tool available. Return first available player command or None."""
     candidates = ["mpv", "mpg123", "ffplay", "termux-media-player", "afplay"]
     for c in candidates:
         if shutil.which(c):
             return c
-    # Try to install common players on Termux / Debian / Brew (best-effort)
     if 'TERMUX_VERSION' in os.environ:
-        ensure_package_install("pkg update -y && pkg install -y mpv ffmpeg mpg123")
+        run_cmd("pkg update -y && pkg install -y mpv ffmpeg mpg123")
     elif shutil.which("apt") or shutil.which("apt-get"):
         apt = shutil.which("apt-get") or shutil.which("apt")
-        ensure_package_install(f"{apt} update -y || true")
-        ensure_package_install(f"{apt} install -y mpv ffmpeg mpg123 || true")
+        run_cmd(f"{apt} update -y || true")
+        run_cmd(f"{apt} install -y mpv ffmpeg mpg123 || true")
     elif shutil.which("brew"):
-        ensure_package_install("brew install mpv ffmpeg mpg123 || true")
-    # re-check
+        run_cmd("brew install mpv ffmpeg mpg123 || true")
     for c in candidates:
         if shutil.which(c):
             return c
     return None
 
 def ensure_python_playback_libs():
-    """Ensure Python playback libs exist (playsound, pydub). Returns list of available modules."""
     avail = []
     try:
-        import playsound  # noqa: F401
+        import playsound  # noqa:F401
         avail.append("playsound")
     except Exception:
         pass
     try:
-        from pydub import AudioSegment  # noqa: F401
+        from pydub import AudioSegment  # noqa:F401
         avail.append("pydub")
     except Exception:
         pass
     if avail:
         return avail
-    # try to install
     pip = shutil.which("pip3") or shutil.which("pip")
     if not pip:
         return []
     run_cmd(f"{pip} install playsound pydub simpleaudio >/dev/null 2>&1 || true")
     try:
-        import playsound  # noqa: F401
+        import playsound  # noqa:F401
         avail.append("playsound")
     except Exception:
         pass
     try:
-        from pydub import AudioSegment  # noqa: F401
+        from pydub import AudioSegment  # noqa:F401
         avail.append("pydub")
     except Exception:
         pass
     return avail
 
 def download_file(url, dest_path, timeout=15):
-    """Download using requests with optional token. Returns True on success."""
     try:
         import requests
     except Exception:
-        # try to install requests quickly
         pip = shutil.which("pip3") or shutil.which("pip")
         if pip:
             run_cmd(f"{pip} install requests >/dev/null 2>&1 || true")
@@ -94,7 +84,6 @@ def download_file(url, dest_path, timeout=15):
             import requests
         except Exception:
             return False
-
     token = os.environ.get("VOICES_GITHUB_TOKEN", "").strip()
     headers = {"User-Agent": "XYTEEE-Downloader/1.0"}
     if token:
@@ -107,11 +96,9 @@ def download_file(url, dest_path, timeout=15):
                     if chunk:
                         f.write(chunk)
             return True
-        else:
-            # non-200
-            return False
     except Exception:
-        return False
+        pass
+    return False
 
 def ensure_voices_from_github_if_needed(voices_dir, filenames):
     base = os.environ.get("VOICES_GITHUB_RAW_BASE_URL", "").strip() or DEFAULT_VOICES_BASE
@@ -120,26 +107,16 @@ def ensure_voices_from_github_if_needed(voices_dir, filenames):
     missing = [f for f in filenames if not os.path.isfile(os.path.join(voices_dir, f))]
     if not missing:
         return True
-    # attempt downloads
-    ok_any = False
+    os.makedirs(voices_dir, exist_ok=True)
     for f in missing:
         url = base + f
         dest = os.path.join(voices_dir, f)
-        try:
-            os.makedirs(voices_dir, exist_ok=True)
-            success = download_file(url, dest)
-            if success:
-                ok_any = True
-            else:
-                # ensure no empty file left
-                if os.path.exists(dest) and os.path.getsize(dest) == 0:
-                    try:
-                        os.remove(dest)
-                    except Exception:
-                        pass
-        except Exception:
-            pass
-    # return True if at least some files present (or none missing)
+        ok = download_file(url, dest)
+        if not ok and os.path.exists(dest) and os.path.getsize(dest) == 0:
+            try:
+                os.remove(dest)
+            except Exception:
+                pass
     present = [f for f in filenames if os.path.isfile(os.path.join(voices_dir, f))]
     return len(present) == len(filenames)
 
@@ -148,8 +125,7 @@ def get_country_from_ip(timeout=7):
         import requests
         r = requests.get("http://ip-api.com/json/", timeout=timeout)
         if r.status_code == 200:
-            data = r.json()
-            return data.get("country", "") or ""
+            return r.json().get("country","") or ""
     except Exception:
         pass
     return ""
@@ -163,6 +139,7 @@ def country_to_voice_file(country_name):
         "oman", "bahrain", "yemen", "iraq", "jordan", "lebanon",
         "palestine", "egypt", "algeria", "morocco", "tunisia"
     }
+    # mappings
     if cn == "bangladesh":
         return "bn.mp3"
     if cn == "india":
@@ -175,10 +152,20 @@ def country_to_voice_file(country_name):
         return "ar.mp3"
     if cn == "afghanistan":
         return "fa.mp3"
+    # new languages
+    if cn in ("portugal", "portugal", "portugal", "brazil", "brazilian", "portuguese"):
+        return "pt.mp3"
+    if cn in ("vietnam", "viet nam", "vietnamese"):
+        return "vi.mp3"
+    if cn in ("myanmar", "burma", "myanmar (burma)"):
+        return "my.mp3"
+    if cn in ("spain", "spain", "spanish", "mexico", "colombia", "argentina", "chile"):
+        return "es.mp3"
+    if cn in ("china", "people's republic of china", "taiwan", "hong kong", "macau", "chinese", "china mainland"):
+        return "zh.mp3"
     return "en.mp3"
 
 def try_play_audio(file_path):
-    # Try system players first
     player = ensure_system_playback()
     if player:
         try:
@@ -186,12 +173,10 @@ def try_play_audio(file_path):
                 run_cmd(f"termux-media-player play '{file_path}'")
                 return True
             else:
-                # mpv/ffplay/mpg123/afplay
                 run_cmd(f"{player} --no-video --really-quiet '{file_path}'")
                 return True
         except Exception:
             pass
-    # Python fallback
     libs = ensure_python_playback_libs()
     if "playsound" in libs:
         try:
@@ -211,27 +196,68 @@ def try_play_audio(file_path):
             pass
     return False
 
-def play_welcome_voice(voices_dir):
-    if os.environ.get("XYTEEE_SKIP_WELCOME", "").strip() in ("1","true","yes"):
+def welcome_marker_paths(script_dir):
+    """Return marker file paths: one for once mode and one for daily mode."""
+    return os.path.join(script_dir, ".welcome_played"), os.path.join(script_dir, ".welcome_played_date.txt")
+
+def should_play_welcome(script_dir):
+    """Decide whether to play based on env + markers."""
+    if os.environ.get("XYTEEE_SKIP_WELCOME", "").strip().lower() in ("1","true","yes"):
+        return False
+    # force override
+    if os.environ.get("XYTEEE_FORCE_WELCOME", "").strip().lower() in ("1","true","yes"):
+        return True
+    mode = os.environ.get("XYTEEE_WELCOME_MODE", "once").strip().lower()  # "once" or "daily"
+    once_marker, date_marker = welcome_marker_paths(script_dir)
+    if mode == "daily":
+        # read date marker; if matches today skip
+        try:
+            if os.path.isfile(date_marker):
+                with open(date_marker, "r") as f:
+                    d = f.read().strip()
+                if d == datetime.utcnow().strftime("%Y-%m-%d"):
+                    return False
+            return True
+        except Exception:
+            return True
+    else:
+        # once mode
+        return not os.path.isfile(once_marker)
+
+def mark_welcome_played(script_dir):
+    once_marker, date_marker = welcome_marker_paths(script_dir)
+    mode = os.environ.get("XYTEEE_WELCOME_MODE", "once").strip().lower()
+    try:
+        if mode == "daily":
+            with open(date_marker, "w") as f:
+                f.write(datetime.utcnow().strftime("%Y-%m-%d"))
+        else:
+            open(once_marker, "w").close()
+    except Exception:
+        pass
+
+def play_welcome_voice(voices_dir, script_dir):
+    if not should_play_welcome(script_dir):
         return False
     country = get_country_from_ip()
     voice_file = country_to_voice_file(country)
     path = os.path.join(voices_dir, voice_file)
     if not os.path.isfile(path):
-        # fallback to en.mp3 if exists
         alt = os.path.join(voices_dir, "en.mp3")
         if os.path.isfile(alt):
             path = alt
         else:
             return False
+    ok = False
     try:
-        try_play_audio(path)
-        return True
+        ok = try_play_audio(path)
     except Exception:
-        return False
+        ok = False
+    if ok:
+        mark_welcome_played(script_dir)
+    return ok
 
 def ensure_runtime_deps():
-    # Ensure httpx + requests installed, best-effort
     try:
         import httpx  # noqa:F401
     except Exception:
@@ -247,26 +273,20 @@ def ensure_runtime_deps():
 
 def main():
     try:
-        # 1) ensure python deps
         ensure_runtime_deps()
-
-        # 2) ensure voices exist (download from github if needed)
         script_dir = os.path.dirname(os.path.abspath(__file__))
         voices_dir = os.path.join(script_dir, "voices")
         os.makedirs(voices_dir, exist_ok=True)
         ensure_voices_from_github_if_needed(voices_dir, WANTED_VOICES)
-
-        # 3) try play welcome voice (non-blocking best-effort)
-        play_welcome_voice(voices_dir)
-
-        # 4) attempt git pull to update code (best-effort)
+        # Try play but obey play-once logic
+        play_welcome_voice(voices_dir, script_dir)
+        # attempt git pull
         try:
             if os.path.isdir(os.path.join(script_dir, ".git")):
                 run_cmd("git pull")
         except Exception:
             pass
-
-        # 5) finally call xcmain.email_verification_system()
+        # call compiled module
         try:
             xc = __import__("xcmain")
             if hasattr(xc, "email_verification_system"):
@@ -278,10 +298,8 @@ def main():
             else:
                 raise AttributeError("xcmain imported but no email_verification_system/main/run found")
         except Exception as e:
-            # print traceback to help debugging then exit with message
             traceback.print_exc()
             sys.exit(str(e))
-
     except KeyboardInterrupt:
         print("Interrupted by user")
     except Exception:
